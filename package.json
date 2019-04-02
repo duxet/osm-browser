@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server --hot"
+    "dev": "NODE_ENV=development node src/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -41,6 +41,7 @@
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
+    "koa-webpack": "^5.2.2",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "uglifyjs-webpack-plugin": "^2.1.2",
