@@ -3,11 +3,6 @@
     <navbar />
 
     <div id="app-container" class="columns is-gapless is-mobile">
-      <div id="app-sidebar" class="column is-one-quarter is-hidden-mobile">
-        <sidebar @category-selected="categoryChanged" />
-      </div>
-
-      <div class="column" style="display: flex; flex-direction: column">
         <v-map ref="map" :maxZoom=19
           :options="{ zoomControl: false }"
           :center="location.coordinates"
@@ -25,8 +20,8 @@
           <v-control-zoom />
         </v-map>
 
+        <search @selectPoint="selectedPoint = $event" />
         <point-info v-if="selectedPoint" :point="selectedPoint" @closed="selectedPoint = null" />
-      </div>
     </div>
   </div>
 </template>
@@ -41,12 +36,14 @@ import PointRepository from './services/PointRepository'
 import Storage from './services/Storage'
 import Point from './models/Point'
 import PointInfo from './components/PointInfo'
+import Search from './components/Search/Search'
 import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
 
 export default {
   components: {
     'point-info': PointInfo,
+    'search': Search,
     'sidebar': Sidebar,
     'navbar': Navbar
   },
@@ -128,5 +125,17 @@ export default {
   #app-sidebar {
     resize: horizontal;
     overflow: auto;
+  }
+
+  .search {
+    position: absolute;
+    z-index: 999;
+    margin: 8px;
+    width: 300px;
+    top: 54px;
+  }
+
+  .leaflet-top {
+    top: 54px;
   }
 </style>

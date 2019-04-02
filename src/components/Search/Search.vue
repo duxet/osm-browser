@@ -4,7 +4,8 @@
       v-model="query" />
 
     <ul class="search-results" v-if="autocomplete.length">
-      <li v-for="(point, index) in autocomplete" :key="index">
+      <li v-for="(point, index) in autocomplete"
+        :key="index" @click="$emit('selectPoint', point)">
         {{ point.name }}
         <br>
         <span class="has-text-grey">{{ point.address[0] }}, {{ point.tags['addr:city']}}</span>
@@ -24,6 +25,11 @@ export default {
       query: '',
     };
   },
+  methods: {
+    openPoint: function (point) {
+      console.log(point);
+    },
+  },
   watch: {
     query: function (query) {
       if (!query) {
@@ -40,8 +46,8 @@ export default {
 </script>
 
 <style>
-  .search {
-    position: relative;
+  .search .input {
+    border-radius: 0;
   }
 
   .search-results {
@@ -59,6 +65,7 @@ export default {
 
   .search-results li:hover {
     background: #eee;
+    cursor: pointer;
   }
 
   .search-results li+li {

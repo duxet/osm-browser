@@ -34,7 +34,14 @@ export default {
 
 <style lang="scss">
   .navbar {
+    position: absolute !important;
+    width: 100%;
     z-index: 1024 !important;
+
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 8px 6px -6px #eee;
 
     .logo {
       margin-right: 10px;

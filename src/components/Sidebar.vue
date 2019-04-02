@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import Search from './Sidebar/Search'
+import Search from './Search/Search'
 import CategoryRepository from '../services/CategoryRepository'
 
 export default {
