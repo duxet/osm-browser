@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import {LMap, LTileLayer, LMarker} from 'vue2-leaflet'
+import {LControlZoom, LMap, LTileLayer, LMarker} from 'vue2-leaflet'
 import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster'
 import VueI18n from 'vue-i18n'
 import VueRouter from 'vue-router'
@@ -11,6 +11,7 @@ Vue.use(VueI18n)
 Vue.use(VueRouter)
 Vue.use(Buefy)
 
+Vue.component('v-control-zoom', LControlZoom)
 Vue.component('v-map', LMap)
 Vue.component('v-tilelayer', LTileLayer)
 Vue.component('v-marker', LMarker)

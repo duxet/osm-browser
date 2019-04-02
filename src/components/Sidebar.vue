@@ -1,5 +1,7 @@
 <template>
   <aside class="menu">
+    <search />
+
     <b-tabs v-model="activeTab">
       <b-tab-item v-for="tab in tabs" :label="$t(tab.id)" :key="tab.name">
         <ul class="menu-list">
@@ -34,9 +36,13 @@
 </template>
 
 <script>
+import Search from './Sidebar/Search'
 import CategoryRepository from '../services/CategoryRepository'
 
 export default {
+  components: {
+    'search': Search
+  },
   data: function () {
     return {
       activeTab: 0,

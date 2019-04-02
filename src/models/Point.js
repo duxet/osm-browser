@@ -1,5 +1,9 @@
 export default class Point {
   constructor(params) {
+    let tags = {};
+    params.tags.map(tag => tags[tag.key] = tag.value);
+    params.tags = tags;
+
     Object.assign(this, params)
   }
 

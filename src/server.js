@@ -26,7 +26,8 @@ app.use(async (ctx, next) => {
   const geo = geoip.lookup(ctx.ip) || { ll: [47.413220, -1.219482] };
   const data = {
     serverData: JSON.stringify({
-      pointsApiUrl: 'https://points.osm.ovh',
+      pointsApiUrl: process.env.POINTS_API_URL || 'http://localhost:4000',
+      //pointsApiUrl: 'https://points.osm.ovh',
       coordinates: geo.ll,
     })
   };

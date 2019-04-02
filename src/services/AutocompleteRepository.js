@@ -6,18 +6,13 @@ export default class {
     this.client = Axios.create({ baseURL })
   }
 
-  getPoints(bbox, type, subtype) {
-    bbox = [
-      bbox.getSouthWest().lat,
-      bbox.getSouthWest().lng,
-      bbox.getNorthEast().lat,
-      bbox.getNorthEast().lng
-    ].join(',')
+  getAutocomplete(query) {
+    query = query + ':**';
 
     return this.client.get('points', {
-      params: { bbox, type, subtype }
+      params: { query }
     }).then((response) => {
       return response.data.map(element => new Point(element))
-    })
+    });
   }
 }
